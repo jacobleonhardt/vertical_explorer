@@ -1,0 +1,7 @@
+/* #root { // don't use root, that will effect all pages
+    display: flex;
+    vertical-align: middle;
+    justify-content: center;
+    text-align: center;
+    background-image: url('../../images/vertical_explore_login.jpg');
+} */

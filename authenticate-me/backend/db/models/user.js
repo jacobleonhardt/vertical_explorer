@@ -86,6 +86,7 @@ module.exports = (sequelize, DataTypes) => {
       hashedPassword,
       total_climbed: 0
     });
+    console.log('+++', await User.scope('currentUser').findByPk(user.id))
     return await User.scope('currentUser').findByPk(user.id);
   };
 

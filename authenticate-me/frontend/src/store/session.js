@@ -9,10 +9,25 @@ const LOGGED_OUT = '/session/LOGGED_OUT';
 
 // Thunks
 
-export const login = (credentials) => async (dispatch) => {
+export const signup = (user) => async (dispatch) => {
+  const { username, email, password } = user;
+  const response = await csrfFetch("/api/users", {
+    method: "POST",
+    body: JSON.stringify({
+      username,
+      email,
+      password,
+    }),
+  });
+  const data = await response.json();
+  dispatch(setSessionUser(data));
+  return response;
+};
+
+export const login = (credential) => async (dispatch) => {
   const res = await csrfFetch(`/api/session`, {
     method: 'POST',
-    body: JSON.stringify(credentials),
+    body: JSON.stringify(credential),
   });
   const user = await res.json();
   if (res.ok) {
@@ -20,6 +35,14 @@ export const login = (credentials) => async (dispatch) => {
   } else {
     throw res;
   }
+};
+
+export const restore = () => async (dispatch) => {
+  const res = await csrfFetch(`/api/session`);
+  const user = await res.json();
+
+  dispatch(setSessionUser(user));
+  return res;
 };
 
 // Action Creators
@@ -40,7 +63,7 @@ function removeSessionUser() {
 // state === session slice of state
 export default function sessionReducer(state = { user: null}, action) {
   let newState;
-  console.log('>>>',state);
+  console.log('>>>', state)
   switch(action.type) {
         case LOGGED_IN:
           newState = action.user;
@@ -51,4 +74,4 @@ export default function sessionReducer(state = { user: null}, action) {
         default:
           return state;
     }
-}
+};
