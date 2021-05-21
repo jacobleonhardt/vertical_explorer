@@ -45,6 +45,14 @@ export const restore = () => async (dispatch) => {
   return res;
 };
 
+export const logout = () => async (dispatch) => {
+  const res = await csrfFetch(`/api/session`, {
+    method: 'DELETE',
+  });
+  dispatch(removeSessionUser());
+  return res;
+};
+
 // Action Creators
 function setSessionUser(user) {
   return {
