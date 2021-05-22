@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from './components/SignUpFormPage';
 import * as sessionActions from "./store/session";
+import Navigation from './components/Navigation';
 
 function App() {
   const dispatch = useDispatch();
@@ -16,6 +17,8 @@ function App() {
 
   // render if we have accessed the route
   return isLoaded && (
+    <div className="appBody">
+      <Navigation isLoaded={isLoaded}/>
       <Switch>
         <Route path='/' exact>
           <h1>Hello from App</h1>
@@ -27,6 +30,7 @@ function App() {
           <SignupFormPage />
         </Route>
       </Switch>
+    </div>
   );
 }
 
