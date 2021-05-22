@@ -1,3 +1,26 @@
-/* li {
-    color: pink;
-} */
+.navbar {
+    font-size: 18px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+}
+
+a {
+    margin: 2px 12px;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 2px;
+    color: #e84832;
+}
+
+a:hover {
+    color: #bd2d1a;
+}
+
+
+
+/* Hide on Landing */
+.hide {
+    display: none;
+}

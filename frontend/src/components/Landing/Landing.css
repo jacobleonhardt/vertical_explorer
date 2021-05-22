@@ -1,0 +1,48 @@
+html, body, #root {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    background: linear-gradient(0deg, rgba(250,250,250,.6), rgba(250,250,250,.6)), url('../../images/vertical-explorer-landing-backgroun.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.landing-page {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.landing-page button {
+    background: #e84832;
+    color: #fff;
+    padding: 8px 16px;
+    border: 0px;
+    margin: 0 auto;
+    margin-bottom: 5px;
+    max-width: 200px;
+    min-width: 125px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 21px;
+}
+
+.landing-page button:hover {
+    background: #bd2d1a;
+}
+
+.landing-page button i {
+    margin-left: 5px;
+}
+
+h1 {
+    font-size: 18px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    justify-content: center;
+}

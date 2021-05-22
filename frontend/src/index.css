@@ -1,1 +1,15 @@
 /* TODO Add site wide styles */
+body {
+    margin: 0;
+}
+
+.content {
+    width: 100%;
+}
+
+img {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
