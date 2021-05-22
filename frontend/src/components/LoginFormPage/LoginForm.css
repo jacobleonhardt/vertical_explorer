@@ -1,7 +1,90 @@
-/* #root { // don't use root, that will effect all pages
+form, label, .submitBtn {
+    width: 100%;
+    max-width: 500px;
+}
+
+.form-content {
+    height: 100%;
     display: flex;
-    vertical-align: middle;
     justify-content: center;
+    align-items: center;
+    background: linear-gradient(0deg, rgba(250,250,250,.6), rgba(250,250,250,.6)), url('../../images/vertical_explore_login.jpg');
+    background-position: 40% 50% ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.errList {
+    margin: 0 auto;
+    border: 2px solid #bd2d1a;
+    background-color: rgba(250, 250, 250, .5);
+    line-height: 21px;
+    font-size: 16px;
+    width: 80%;
+    max-width: 80%;
+    color: #bd2d1a;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+.errList p {
+    margin-left: 8px;
+}
+
+label {
     text-align: center;
-    background-image: url('../../images/vertical_explore_login.jpg');
-} */
+}
+
+label span {
+    display: none;
+}
+
+input::placeholder {
+    font-size: 18px;
+    line-height: 21px;
+    color: #444;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    justify-content: center;
+}
+
+input {
+    width: 80%;
+    min-width: 200px;
+    font-size: 18px;
+    line-height: 21px;
+    color: #000;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    padding: 8px;
+    border: 2px solid #000;
+    border-radius: 3px;
+}
+
+.submitBtn {
+    text-align: center;
+}
+
+button {
+    width: 80%;
+    min-width: 200px;
+    margin-top: 16px;
+    background: #e84832;
+    color: #fff;
+    padding: 4px 16px 8px;
+    border: 0px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 21px;
+
+}
+
+button:hover {
+    background: #bd2d1a;
+}

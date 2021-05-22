@@ -1,11 +1,16 @@
-html, body, #root {
+html, body, #root, .content {
+    height: 100%;
+}
+
+.content {
+    background: rgba(0,0,0,0);
+}
+
+.landing-page {
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-body {
     background: linear-gradient(0deg, rgba(250,250,250,.6), rgba(250,250,250,.6)), url('../../images/vertical-explorer-landing-backgroun.jpg');
     background-position: center;
     background-repeat: no-repeat;

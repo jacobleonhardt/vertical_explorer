@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { login } from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import logo from '../../images/vertical_explorer_logo-transparent.png';
 import './LoginForm.css';
 
 function LoginFormPage() {
@@ -29,30 +30,34 @@ function LoginFormPage() {
   }
 
   return (
+    <div className='form-content'>
     <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-      </ul>
+      <div className={errors.length > 0 ? 'errList' : null}>
+        {errors.map((error, idx) => <p key={idx}><i class="fas fa-exclamation-triangle"></i>{error}</p>)}
+      </div>
       <label>
-        Username/Email
+        <span>Username/Email</span><br/>
         <input
           type="text"
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
+          placeholder="Username/Email"
           required
         />
-      </label>
+      </label><br/>
       <label>
-        Password
+        <span>Password</span><br/>
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
           required
         />
-      </label>
-      <button type="submit">Login</button>
+      </label><br/>
+      <div className='submitBtn'><button type="submit">Login</button></div>
     </form>
+    </div>
   );
 }
 
