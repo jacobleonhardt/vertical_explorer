@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "(Like Untapped, but for Rock Climbers)",
   "main": "index.js",
+  "engines": {
+    "node": "v12.20.1"
+  },
   "scripts": {
     "heroku-postbuild": "npm run build --prefix frontend",
     "install": "npm --prefix backend install backend && npm --prefix frontend install frontend",
