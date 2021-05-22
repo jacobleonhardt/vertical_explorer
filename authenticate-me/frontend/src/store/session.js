@@ -71,7 +71,6 @@ function removeSessionUser() {
 // state === session slice of state
 export default function sessionReducer(state = { user: null}, action) {
   let newState;
-  console.log('>>>', state)
   switch(action.type) {
         case LOGGED_IN:
           newState = action.user;
