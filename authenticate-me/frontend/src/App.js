@@ -16,21 +16,20 @@ function App() {
 
 
   // render if we have accessed the route
-  return isLoaded && (
-    <div className="appBody">
-      <Navigation isLoaded={isLoaded}/>
-      <Switch>
-        <Route path='/' exact>
-          <h1>Hello from App</h1>
-        </Route>
-        <Route path='/login'>
-          <LoginFormPage />
-        </Route>
-        <Route path='/signup'>
-          <SignupFormPage />
-        </Route>
-      </Switch>
-    </div>
+  return (
+    <>
+      <Navigation isLoaded={isLoaded} />
+      {isLoaded && (
+        <Switch>
+          <Route path="/login">
+            <LoginFormPage />
+          </Route>
+          <Route path="/signup">
+            <SignupFormPage />
+          </Route>
+        </Switch>
+      )}
+    </>
   );
 }
 
