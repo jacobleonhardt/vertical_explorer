@@ -2,7 +2,7 @@
     background-color:  #e84832;
     padding: 5px 15px;
     margin: 0 auto 2px;
-    max-width: 70%;
+    max-width: 50%;
 }
 
 .climb-card p {
@@ -19,7 +19,7 @@ h4 span {
 h4 span.climbName {
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
     .climb-card {
         max-width: 90%;
     }

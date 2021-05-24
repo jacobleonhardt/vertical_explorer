@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { login } from '../../store/session';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
 import logo from '../../images/vertical_explorer_logo-transparent.png';
 import './Landing.css';
@@ -8,7 +8,7 @@ import './Landing.css';
 function Landing() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const sessionUser = useSelector(state => state.session.user);
+  // const sessionUser = useSelector(state => state.session.user);
   const [errors, setErrors] = useState([]);
 
 

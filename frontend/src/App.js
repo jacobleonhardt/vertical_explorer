@@ -5,6 +5,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from './components/SignUpFormPage';
 import Landing from './components/Landing';
 import Profile from './components/Profile';
+import EditProfile from './components/EditProfile/EditProfile';
 import * as sessionActions from "./store/session";
 import Navigation from './components/Navigation';
 
@@ -18,7 +19,6 @@ function App() {
     // this is going to access the route, via calling restore
     dispatch(sessionActions.restore()).then(() => setIsLoaded(true));
   }, [dispatch]);
-
 
   // render if we have accessed the route
   return (
@@ -34,6 +34,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route path="/settings">
+            <EditProfile />
           </Route>
         </Switch>
       )}

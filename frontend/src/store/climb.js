@@ -6,10 +6,8 @@ const GET_CLIMBS = '/climbs/GET';
 // Thunks
 export const getClimbs = () => async (dispatch) => {
     const res = await csrfFetch('/api/climbs');
-    console.log('<><><>', res.ok)
 
     if (res.ok) {
-        console.log('HERE')
       const climbs = await res.json();
       dispatch(get(climbs));
     }

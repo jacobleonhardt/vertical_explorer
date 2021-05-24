@@ -1,7 +1,6 @@
 // Imports
 import { csrfFetch } from './csrf';
 
-
 // Constants
 // const dispatch = useDispatch();
 const LOGGED_IN = '/session/LOGGED_IN';
@@ -36,6 +35,34 @@ export const login = (credential) => async (dispatch) => {
   }
 };
 
+export const edit = (user) => async (dispatch) => {
+  const { username, email, password, id } = user;
+  let response;
+  if (password === '') {
+    response = await csrfFetch(`/api/settings`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        username,
+        email,
+        id
+      }),
+    });
+
+  } else {
+    response = await csrfFetch(`/api/settings`, {
+      method: "PUT",
+      body: JSON.stringify({
+        username,
+        email,
+        password,
+        id
+      }),
+    });
+  }
+  const data = await response.json();
+  dispatch(setSessionUser(data));
+};
+
 export const restore = () => async (dispatch) => {
   const res = await csrfFetch(`/api/session`);
   const user = await res.json();
@@ -68,14 +95,15 @@ function removeSessionUser() {
 
 // Reducer
 // state === session slice of state
-export default function sessionReducer(state = { user: null}, action) {
-  let newState;
+export default function sessionReducer(state = {}, action) {
+  let newState = {...state};
+  console.log('/// NEWSTATE: ', newState)
   switch(action.type) {
         case LOGGED_IN:
-          newState = action.user;
+          newState['user'] = action.user;
           return newState;
         case LOGGED_OUT:
-          newState = { user: null };
+          newState['user'] = null;
           return newState;
         default:
           return state;
