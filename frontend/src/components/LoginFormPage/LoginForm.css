@@ -38,6 +38,10 @@ form {
     margin-left: 8px;
 }
 
+.errList p i {
+    margin-right: 2px;
+}
+
 label {
     text-align: center;
 }
@@ -72,7 +76,7 @@ input {
     text-align: center;
 }
 
-button {
+button.formBtn {
     width: 80%;
     min-width: 200px;
     margin-top: 16px;
@@ -85,6 +89,14 @@ button {
 
 }
 
-button:hover {
+button.formBtn:hover {
     background: #bd2d1a;
+}
+
+.link-to {
+    margin-top: 16px;
+    font-size: 16px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    text-align: center;
 }

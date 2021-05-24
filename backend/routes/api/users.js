@@ -47,4 +47,25 @@ router.post(
   }),
 );
 
-  module.exports = router;
+
+// Edit Profile
+router.get('/:id', asyncHandler(async function(req, res) {
+  const user = await PokemonRepository.one(req.params.id);
+  return res.json(user);
+}));
+
+router.put(
+  "/:id",
+  validateSignup,
+  asyncHandler(async function (req, res) {
+    const user = await User.getCurrentUserById(req.body);
+    return res.json(user);
+  })
+);
+
+router.delete("/:id", asyncHandler(async function (req, res) {
+  const itemId = await ItemsRepository.deleteItem(req.params.id);
+  return res.json({ itemId });
+}));
+
+module.exports = router;

@@ -8,7 +8,6 @@ const LOGGED_IN = '/session/LOGGED_IN';
 const LOGGED_OUT = '/session/LOGGED_OUT';
 
 // Thunks
-
 export const signup = (user) => async (dispatch) => {
   const { username, email, password } = user;
   const response = await csrfFetch("/api/users", {
@@ -76,7 +75,7 @@ export default function sessionReducer(state = { user: null}, action) {
           newState = action.user;
           return newState;
         case LOGGED_OUT:
-          newState = null;
+          newState = { user: null };
           return newState;
         default:
           return state;

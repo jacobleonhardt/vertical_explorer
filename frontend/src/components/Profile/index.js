@@ -1,58 +1,39 @@
-import React, { useState } from 'react';
-import { login } from '../../store/session';
+import React, { useEffect, useState } from 'react';
+import { getClimbs } from '../../store/climb';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import './Profile.css';
 
 function Profile() {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
-  const [credential, setCredential] = useState('');
-  const [password, setPassword] = useState('');
-  const [errors, setErrors] = useState([]);
+  const prevClimbs =  useSelector(state => state.climbs);
 
-  if (sessionUser) return (
-    <Redirect to="/" />
-  );
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setErrors([]);
-
-    const userCredentials = { credential, password };
-
-    return dispatch(login(userCredentials))
-      .catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-      });
-  }
+  console.log('///', prevClimbs)
+  useEffect(() => {
+    return dispatch(getClimbs());
+  }, [])
 
   return (
-    <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-      </ul>
-      <label>
-        Username/Email
-        <input
-          type="text"
-          value={credential}
-          onChange={(e) => setCredential(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Password
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </label>
-      <button type="submit">Login</button>
-    </form>
+    <div>
+      <div className='profile-content'>
+        <div className='greeting'>
+          <h2><span>{sessionUser.username}</span></h2>
+          <h3>Total Climbed: <span>{sessionUser.total_climbed ? sessionUser.total_climbed : '0'}</span> ft</h3>
+        </div>
+      </div>
+      <div className='prev-climbs'>
+        <h4>Recent Climbs</h4>
+        {prevClimbs.map(climb => {
+          return (
+            <div className='climb-card'>
+              <h4>{climb.name}</h4>
+              <h5>{climb.climb_height}</h5>
+              {climb.note ? <p>{climb.note}</p> : null}
+            </div>
+          )
+        })}
+      </div>
+    </div>
   );
 }
 

@@ -21,7 +21,7 @@ const validateLogin = [
   handleValidationErrors,
 ];
 
-// Log in
+// Login
 router.post(
   '/',
   validateLogin,

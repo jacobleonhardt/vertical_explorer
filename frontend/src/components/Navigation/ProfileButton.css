@@ -1,0 +1,38 @@
+.profile-dropdown {
+    padding: 8px;
+    border: 1px solid #000;
+    background: #fff;
+    position: absolute;
+    top: 60px;
+    right: 16px;
+}
+
+button.profileBtn {
+    background: #e84832;
+    color: #fff;
+    font-size: 18px;
+    border: 0px;
+    padding: 5px;
+    border-radius: 3px;
+    width: 30px;
+    max-width: 50px;
+    height: 30px;
+    max-height: 50px;
+}
+
+button.profileBtn:hover {
+    background: #bd2d1a;
+}
+
+button.logoutBtn {
+    background: #e84832;
+    color: #fff;
+    font-size: 18px;
+    border: 0px;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+button.logoutBtn:hover {
+    background: #bd2d1a;
+}

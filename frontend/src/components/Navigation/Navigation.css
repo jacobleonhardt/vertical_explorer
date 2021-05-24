@@ -3,7 +3,9 @@
     font-family: 'Quicksand', sans-serif;
     font-weight: 500;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 16px;
 }
 
 a {
@@ -17,8 +19,6 @@ a {
 a:hover {
     color: #bd2d1a;
 }
-
-
 
 /* Hide on Landing */
 .hide {

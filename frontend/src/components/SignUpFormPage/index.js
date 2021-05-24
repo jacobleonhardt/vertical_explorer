@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
+import logo from '../../images/vertical_explorer_logo-transparent.png';
 import * as sessionActions from "../../store/session";
 
 function SignupFormPage() {
@@ -31,48 +32,56 @@ function SignupFormPage() {
   };
 
   return (
+    <div className='form-content'>
     <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-      </ul>
+      <Link to='/'><img src={logo} alt="Vertical Explorer Logo" /></Link>
+      <div className={errors.length > 0 ? 'errList' : null}>
+        {errors.map((error, idx) => <p key={idx}><i class="fas fa-exclamation-triangle"></i>{error}</p>)}
+      </div>
       <label>
-        Username
+      <span>Username</span><br/>
         <input
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          placeholder="Username"
           required
         />
-      </label>
+      </label><br/>
       <label>
-        Email
+      <span>Email</span><br/>
         <input
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
           required
         />
-      </label>
+      </label><br/>
       <label>
-        Password
+      <span>Password</span><br/>
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
           required
         />
-      </label>
+      </label><br/>
       <label>
-        Confirm Password
+      <span>Confirm Password</span><br/>
         <input
           type="password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
+          placeholder="Confirm Password"
           required
         />
-      </label>
-      <button type="submit">Sign Up</button>
+      </label><br/>
+      <div className='submitBtn'><button className='formBtn' type="submit">Join</button></div>
+      <Link to='/login' className='link-to'>Have an Account?</Link>
     </form>
+    </div>
   );
 }
 

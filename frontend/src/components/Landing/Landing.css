@@ -12,7 +12,7 @@ html, body, #root, .content {
     justify-content: center;
     align-items: center;
     background: linear-gradient(0deg, rgba(250,250,250,.6), rgba(250,250,250,.6)), url('../../images/vertical-explorer-landing-backgroun.jpg');
-    background-position: center;
+    background-position: 50% 30%;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -44,6 +44,19 @@ html, body, #root, .content {
 .landing-page button i {
     margin-left: 5px;
 }
+
+/* button.demoUser {
+    background: rgba(0,0,0,0);
+    color: #e84832;
+    font-weight: 500;
+    max-width: 300px;
+    min-width: 125px;
+}
+
+button.demoUser:hover {
+    background-color: rgba(0,0,0,0);
+    color: #bd2d1a;
+} */
 
 h1 {
     font-size: 18px;
