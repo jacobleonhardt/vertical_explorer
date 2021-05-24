@@ -5,6 +5,7 @@ import { csrfFetch } from './csrf';
 // const dispatch = useDispatch();
 const LOGGED_IN = '/session/LOGGED_IN';
 const LOGGED_OUT = '/session/LOGGED_OUT';
+const DELETE = '/settings/DELETE';
 
 // Thunks
 export const signup = (user) => async (dispatch) => {
@@ -79,6 +80,20 @@ export const logout = () => async (dispatch) => {
   return res;
 };
 
+export const deleteUser = (id) => async (dispatch) => {
+  const res = await csrfFetch(`/api/settings`, {
+    method: 'DELETE',
+    body: JSON.stringify({
+      id
+    })
+    });
+
+  if(res.ok) {
+    dispatch(deleteSessionUser());
+  }
+  return res;
+};
+
 // Action Creators
 function setSessionUser(user) {
   return {
@@ -93,16 +108,24 @@ function removeSessionUser() {
   };
 }
 
+function deleteSessionUser() {
+  return {
+    type: DELETE
+  };
+}
+
 // Reducer
 // state === session slice of state
 export default function sessionReducer(state = {}, action) {
   let newState = {...state};
-  console.log('/// NEWSTATE: ', newState)
   switch(action.type) {
         case LOGGED_IN:
           newState['user'] = action.user;
           return newState;
         case LOGGED_OUT:
+          newState['user'] = null;
+          return newState;
+        case DELETE:
           newState['user'] = null;
           return newState;
         default:

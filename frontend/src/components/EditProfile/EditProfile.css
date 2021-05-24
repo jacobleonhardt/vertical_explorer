@@ -19,3 +19,26 @@ hr {
     background-color: #000;
     border: 0px;
 }
+
+.delete {
+    text-align: center;
+}
+
+button.deleteBtn {
+    width: 80%;
+    min-width: 200px;
+    margin-top: 32px;
+    border: 2px solid #e84832;
+    background: rgba(0, 0, 0, 0);
+    color: #e84832;
+    padding: 4px 16px 8px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 18px;
+
+}
+
+button.deleteBtn:hover {
+    background: #e84832;
+    border-color: #e84832;
+    color: #fff;
+}

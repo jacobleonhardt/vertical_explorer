@@ -89,29 +89,10 @@ module.exports = (sequelize, DataTypes) => {
     return await User.scope('currentUser').findByPk(user.id);
   };
 
-  // User.update = async function (updates) {
-  //   const id = updates.id;
-  //   const hashedPassword = bcrypt.hashSync(updates.password);
-  //   const user = await User.update(updates, {
-  //     where: { id },
-  //     returning: true,
-  //   });
-  //   return await User.scope('currentUser').findByPk(user.id);
-  // };
-
-  // User.update = async function (details) {
-  //   const id = details.id;
-  //   delete details.id;
-  //   await User.update(
-  //     details,
-  //     {
-  //       where: { id },
-  //       returning: true,
-  //       plain: true,
-  //     }
-  //   );
-  //   return id;
-  // }
+  User.deleteProfile = async function (id) {
+    const profile = await User.findByPk(id);
+    User.destroy({where : {id: profile.id}});
+  }
 
   User.associate = function(models) {
     User.hasMany(models.Climb, { foreignKey: 'user_id' })

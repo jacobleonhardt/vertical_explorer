@@ -25,6 +25,10 @@ export default function EditProfile() {
     return setErrors(['Confirm Password field must be the same as the Password field']);
   };
 
+  const onDelete = (e) => {
+    e.preventDefault();
+    return dispatch(sessionActions.deleteUser(id))
+  };
 
 
   return (
@@ -76,6 +80,7 @@ export default function EditProfile() {
       </label><br/>
       <div className='submitBtn'><button className='formBtn' type="submit">Update</button></div>
       <Link to='/' className='link-to'><i class="fas fa-backward"></i> Back</Link>
+      <div className="delete"><button className='deleteBtn' onClick={onDelete}>Delete Profile <i class="fas fa-trash"></i></button></div>
     </form>
     </div>
   );

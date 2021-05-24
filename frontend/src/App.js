@@ -20,6 +20,7 @@ function App() {
     dispatch(sessionActions.restore()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
+
   // render if we have accessed the route
   return (
     <div className='content'>
