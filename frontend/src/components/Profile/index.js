@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { getClimbs } from '../../store/climb';
 import { useDispatch, useSelector } from 'react-redux';
+import ClimbCard from '../ClimbCard';
 import './Profile.css';
 
 function Profile() {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
-  const prevClimbs =  useSelector(state => state.climbs);
+  const prevClimbs = useSelector(state => state.climbs);
 
-  console.log('///', prevClimbs)
   useEffect(() => {
     return dispatch(getClimbs());
   }, [])
@@ -23,15 +23,7 @@ function Profile() {
       </div>
       <div className='prev-climbs'>
         <h4>Recent Climbs</h4>
-        {prevClimbs.map(climb => {
-          return (
-            <div className='climb-card'>
-              <h4>{climb.name}</h4>
-              <h5>{climb.climb_height}</h5>
-              {climb.note ? <p>{climb.note}</p> : null}
-            </div>
-          )
-        })}
+         {prevClimbs ? <ClimbCard /> : <span className='loading'>Loading...</span>}
       </div>
     </div>
   );

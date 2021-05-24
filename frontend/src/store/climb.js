@@ -4,14 +4,16 @@ import { csrfFetch } from './csrf';
 const GET_CLIMBS = '/climbs/GET';
 
 // Thunks
-export const getClimbs = () => async dispatch => {
-    const res = await csrfFetch(`/api/climbs`);
+export const getClimbs = () => async (dispatch) => {
+    const res = await csrfFetch('/api/climbs');
+    console.log('<><><>', res.ok)
 
     if (res.ok) {
+        console.log('HERE')
       const climbs = await res.json();
       dispatch(get(climbs));
     }
-  };
+}
 
 // Action Creator
 function get(climbs) {

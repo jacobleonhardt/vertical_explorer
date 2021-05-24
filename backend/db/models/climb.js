@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Climb.list = async function (id) {
-    return await Climb.findAll({ where: {user_id: 24}});
+    return await Climb.findAll({ where: {user_id: id}});
   };
 
   // User.getCurrentUserById = async function (id) {
