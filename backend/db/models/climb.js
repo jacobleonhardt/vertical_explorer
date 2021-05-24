@@ -6,6 +6,10 @@ module.exports = (sequelize, DataTypes) => {
   const Climb = sequelize.define('Climb', {
     user_id: {
       type: DataTypes.INTEGER,
+      references: {
+        model: "User",
+        key: 'id'
+      },
     },
     name: {
       type: DataTypes.STRING,

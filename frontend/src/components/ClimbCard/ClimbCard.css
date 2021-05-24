@@ -1,0 +1,26 @@
+.climb-card {
+    background-color:  #e84832;
+    padding: 5px 15px;
+    margin: 0 auto 2px;
+    max-width: 70%;
+}
+
+.climb-card p {
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+}
+
+h4 span {
+    color: #fff;
+    font-size: 18px;
+    text-transform: none;
+}
+
+h4 span.climbName {
+}
+
+@media screen and (max-width: 767px) {
+    .climb-card {
+        max-width: 90%;
+    }
+}
