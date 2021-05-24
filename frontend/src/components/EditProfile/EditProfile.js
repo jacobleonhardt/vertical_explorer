@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './EditProfile.css';
 
 export default function EditProfile() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState(sessionUser.email);
   const [username, setUsername] = useState(sessionUser.username);
@@ -19,7 +20,8 @@ export default function EditProfile() {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.edit({ email, username, password, id }))
+      dispatch(sessionActions.edit({ email, username, password, id }))
+      history.push('/');
     }
 
     return setErrors(['Confirm Password field must be the same as the Password field']);
@@ -27,7 +29,8 @@ export default function EditProfile() {
 
   const onDelete = (e) => {
     e.preventDefault();
-    return dispatch(sessionActions.deleteUser(id))
+    dispatch(sessionActions.deleteUser(id))
+    history.push('/');
   };
 
 

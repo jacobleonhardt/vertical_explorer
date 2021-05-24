@@ -41,7 +41,7 @@ function Landing() {
         <h1>Ready to Explore the Vertical?</h1>
         <button onClick={(e) => loginClick(e)}>Login<i class="fas fa-sign-in-alt"></i></button>
         <button onClick={(e) => joinClick(e)}>Join<i class="fas fa-user-plus"></i></button>
-        <Link onClick={loginDemo} className='link-to'>Login as Demo <i class="fas fa-chevron-right"></i></Link>
+        <Link onClick={loginDemo} className='link-to' to=''>Login as Demo <i class="fas fa-chevron-right"></i></Link>
     </div>
   );
 }

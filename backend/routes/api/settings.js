@@ -40,9 +40,9 @@ router.delete(
   '/',
   asyncHandler( async (req, res) => {
     const { id } = req.body;
-    console.log('><><><', req.body)
     await User.deleteProfile(id);
     res.clearCookie('token');
+    return res.json({ message: 'profile deleted' });
   })
 );
 

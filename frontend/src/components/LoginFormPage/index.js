@@ -71,7 +71,7 @@ function LoginFormPage() {
       </label><br/>
       <div className='submitBtn'><button className='formBtn' type="submit">Login</button></div>
       <Link to='/signup' className='link-to'>Need to Join?</Link>
-      <Link onClick={loginDemo} className='link-to'>Login as Demo <i class="fas fa-chevron-right"></i></Link>
+      <Link onClick={loginDemo} className='link-to' to=''>Login as Demo <i class="fas fa-chevron-right"></i></Link>
     </form>
     </div>
   );

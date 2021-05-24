@@ -5,7 +5,6 @@ import { csrfFetch } from './csrf';
 // const dispatch = useDispatch();
 const LOGGED_IN = '/session/LOGGED_IN';
 const LOGGED_OUT = '/session/LOGGED_OUT';
-const DELETE = '/settings/DELETE';
 
 // Thunks
 export const signup = (user) => async (dispatch) => {
@@ -89,7 +88,7 @@ export const deleteUser = (id) => async (dispatch) => {
     });
 
   if(res.ok) {
-    dispatch(deleteSessionUser());
+    dispatch(removeSessionUser());
   }
   return res;
 };
@@ -108,12 +107,6 @@ function removeSessionUser() {
   };
 }
 
-function deleteSessionUser() {
-  return {
-    type: DELETE
-  };
-}
-
 // Reducer
 // state === session slice of state
 export default function sessionReducer(state = {}, action) {
@@ -123,9 +116,6 @@ export default function sessionReducer(state = {}, action) {
           newState['user'] = action.user;
           return newState;
         case LOGGED_OUT:
-          newState['user'] = null;
-          return newState;
-        case DELETE:
           newState['user'] = null;
           return newState;
         default:

@@ -86,7 +86,10 @@ module.exports = (sequelize, DataTypes) => {
       hashedPassword,
       total_climbed: 0
     });
-    return await User.scope('currentUser').findByPk(user.id);
+
+    const profile = user.dataValues;
+    console.log('<><><>', await User.scope('currentUser').findByPk(profile.id))
+    return await User.scope('currentUser').findByPk(profile.id);
   };
 
   User.deleteProfile = async function (id) {
