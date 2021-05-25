@@ -5,7 +5,7 @@ module.exports = {
     return queryInterface.bulkInsert('Climbs', [
     {
       id: 1,
-      user_id: 67,
+      user_id: 1,
       name: 'Vertical Escape Night Climb',
       notes: 'climbed the chimney three times in the dark! (well... with a headlight)',
       climb_height: 90,
@@ -14,7 +14,7 @@ module.exports = {
     },
     {
       id: 2,
-      user_id: 67,
+      user_id: 1,
       name: 'Climbing with Will',
       notes: 'Speed climbed the blue wall. Lost to Will by 30 secs.',
       climb_height: 150,
