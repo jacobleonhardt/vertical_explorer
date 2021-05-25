@@ -47,11 +47,16 @@ router.patch(
 );
 
 router.delete(
-    '/id',
+    '/:id',
+    restoreUser,
     asyncHandler( async (req, res) => {
+      console.log('<><><> HERE')
       const { id } = req.body;
       await Climb.delete(id);
-      return res.json({ message: 'climb deleted' });
+
+
+      const myClimbs = await Climb.findAll({ where: { user_id } });
+      return res.json(myClimbs);
     })
   );
 
