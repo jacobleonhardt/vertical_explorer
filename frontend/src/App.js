@@ -7,10 +7,10 @@ import Landing from './components/Landing';
 import Profile from './components/Profile';
 import EditProfile from './components/EditProfile/index.js';
 import Climbs from './components/Climbs/index.js';
+import EditClimb from './components/EditClimb/index.js';
 import Footer from './components/Footer';
 import * as sessionActions from "./store/session";
 import Navigation from './components/Navigation';
-
 
 function App() {
   const dispatch = useDispatch();
@@ -43,6 +43,9 @@ function App() {
           </Route>
           <Route path="/climbs">
             <Climbs />
+          </Route>
+          <Route path='/climbs/edit'>
+            <EditClimb />
           </Route>
         </Switch>
       )}

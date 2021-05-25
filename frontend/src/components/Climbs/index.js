@@ -12,7 +12,7 @@ function Climbs() {
     const sessionClimb = useSelector((state) => state.climb);
     const [name, setName] = useState('');
     const [notes, setNotes] = useState('');
-    const [height, setHeigh] = useState(0);
+    const [climb_height, setClimb_height] = useState(0);
     const [errors, setErrors] = useState([]);
     const user_id = sessionUser.id;
     // const id = sessionClimb.id;
@@ -20,10 +20,10 @@ function Climbs() {
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
-        dispatch(sessionActions.editClimb({ user_id, name, notes, height }))
+        dispatch(sessionActions.addClimb({ user_id, name, notes, climb_height }))
         history.push('/');
 
-        return setErrors(['Something went wrong. Please check that all the necessary fields are filled out.']);
+        // return setErrors(['Something went wrong. Please check that all the necessary fields are filled out.']);
       };
 
       const onDelete = (e) => {
@@ -58,8 +58,8 @@ function Climbs() {
               placeholder="Notes..."
             ></textarea>
           </label><br/>
-          <label>
-          <span>Add Routes</span><br/>
+          {/* <label> */}
+          {/* <span>Add Routes</span><br/> */}
             {/* <select>
             {routes.map(route => (
                 <input
@@ -71,7 +71,7 @@ function Climbs() {
                 />
             ))}
             </select> */}
-          </label><br/>
+          {/* </label><br/> */}
           <div className='submitBtn'><button className='formBtn' type="submit">Add Climb</button></div>
           <Link to='/' className='link-to'><i class="fas fa-backward"></i> Back</Link>
           <div className="delete"><button className='deleteBtn' onClick={onDelete}>Delete Climb <i class="fas fa-trash"></i></button></div>

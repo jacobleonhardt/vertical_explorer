@@ -17,13 +17,13 @@ router.get('/', restoreUser, asyncHandler( async (req, res) => {
     return res.json(climbs);
 }));
 
-router.post('/', asyncHandler( async (req, res) => {
-    const { user_id, name, notes, total_height } = req.body;
+router.post('/', restoreUser, asyncHandler( async (req, res) => {
+    const { user_id, name, notes, climb_height } = req.body;
     const climbs = await Climb.add({
         user_id,
         name,
         notes,
-        total_height
+        climb_height
     });
 
     return res.json(climbs);

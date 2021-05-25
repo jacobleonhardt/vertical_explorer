@@ -21,7 +21,7 @@ module.exports = {
         type: Sequelize.TEXT
       },
       climb_height: {
-        allowNull: false,
+        defaultValue: null,
         type: Sequelize.INTEGER,
       },
       createdAt: {

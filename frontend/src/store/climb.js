@@ -8,26 +8,42 @@ const REMOVE_CLIMB = '/climbs/REMOVE';
 // Thunks
 export const getClimbs = () => async (dispatch) => {
     const res = await csrfFetch('/api/climbs');
-
     if (res.ok) {
       const climbs = await res.json();
       dispatch(get(climbs));
     }
 }
 
-export const editClimb = (climb) => async (dispatch) => {
-    const { user_id, name, notes, height } = climb;
-    let response = await csrfFetch(`/api/climbs`, {
+export const addClimb = (climb) => async (dispatch) => {
+    const { user_id, name, notes, climb_height } = climb;
+    let res = await csrfFetch('/api/climbs', {
+        method: "POST",
+        body: JSON.stringify({
+            user_id,
+            name,
+            notes,
+            climb_height
+        }),
+      });
+    const data = await res.json();
+    dispatch(add(data));
+    return res;
+  };
+
+  export const editClimb = (climb) => async (dispatch) => {
+    const { user_id, name, notes, climb_height } = climb;
+    let res = await csrfFetch('/api/climbs', {
         method: "PUT",
         body: JSON.stringify({
             user_id,
             name,
             notes,
-            height
+            climb_height
         }),
       });
-    const data = await response.json();
+    const data = await res.json();
     dispatch(add(data));
+    return res;
   };
 
   export const deleteClimb = (id) => async (dispatch) => {

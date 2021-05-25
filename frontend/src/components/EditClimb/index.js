@@ -2,17 +2,17 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/climb";
-import './EditClimbs.css';
+import './EditClimb.css';
 
-export default function Climbs() {
+export default function EditClimb() {
 
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector((state) => state.session.user);
     const sessionClimb = useSelector((state) => state.climb);
-    const [name, setName] = useState('');
-    const [notes, setNotes] = useState('');
-    const [height, setHeigh] = useState(0);
+    const [name, setName] = useState(sessionClimb.name);
+    const [notes, setNotes] = useState(sessionClimb.notes);
+    const [height, setHeigh] = useState(sessionClimb.height);
     const [errors, setErrors] = useState([]);
     const user_id = sessionUser.id;
     // const id = sessionClimb.id;

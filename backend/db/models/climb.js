@@ -31,7 +31,13 @@ module.exports = (sequelize, DataTypes) => {
 
   });
 
+  Climb.prototype.toSafeObject = function() { // remember, this cannot be an arrow function
+    const { user_id, name, notes, climb_height } = this;
+    return { user_id, name, notes, climb_height };
+  };
+
   Climb.add = async function ({ user_id, name, notes, climb_height }) {
+
     const climb = await Climb.create({
       user_id,
       name,
@@ -45,7 +51,11 @@ module.exports = (sequelize, DataTypes) => {
 
 
   Climb.list = async function (id) {
-    return await Climb.findAll({ where: {user_id: id}});
+    return await Climb.findAll({ where: {
+        user_id: id
+      }, order: [
+      ['createdAt', 'DESC'],
+  ], });
   };
 
   Climb.delete = async function (id) {

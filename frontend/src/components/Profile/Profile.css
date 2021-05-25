@@ -20,17 +20,24 @@
 
 .greeting span {
     color: #000;
-    font-weight: bold;
 }
 
-h2 {
-    font-size: 24px;
+h2  {
+    font-size: 36px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
     margin: 0;
 }
 
 h3 {
-    font-size: 18px;
+    font-size: 21px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
     margin: 0;
+}
+
+h3 i {
+    font-size: 21px;
 }
 
 h4 {

@@ -18,7 +18,7 @@ function Profile() {
       <div className='profile-content'>
         <div className='greeting'>
           <h2><span>{sessionUser.username}</span></h2>
-          <h3>Total Climbed: <span>{sessionUser.total_climbed ? sessionUser.total_climbed : '0'}</span> ft</h3>
+          <h3><i class="fas fa-mountain"></i> <span>{sessionUser.total_climbed ? sessionUser.total_climbed : '0'}</span> ft</h3>
         </div>
       </div>
       <div className='prev-climbs'>
