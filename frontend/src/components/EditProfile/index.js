@@ -35,7 +35,7 @@ export default function EditProfile() {
 
 
   return (
-    <div className='form-content'>
+    <div className='edit-form-content'>
     <form onSubmit={handleSubmit}>
       <h3>Yo, {sessionUser.username}. What's new?</h3>
       <div className={errors.length > 0 ? 'errList' : null}>

@@ -88,7 +88,6 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     const profile = user.dataValues;
-    console.log('<><><>', await User.scope('currentUser').findByPk(profile.id))
     return await User.scope('currentUser').findByPk(profile.id);
   };
 

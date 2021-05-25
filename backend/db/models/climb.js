@@ -31,13 +31,27 @@ module.exports = (sequelize, DataTypes) => {
 
   });
 
+  Climb.add = async function ({ user_id, name, notes, climb_height }) {
+    const climb = await Climb.create({
+      user_id,
+      name,
+      notes,
+      climb_height
+    });
+
+    const newClimb = climb.dataValues;
+    return await CLimb.findByPk(newClimb.id);
+  };
+
+
   Climb.list = async function (id) {
     return await Climb.findAll({ where: {user_id: id}});
   };
 
-  // User.getCurrentUserById = async function (id) {
-  //   return await User.scope('currentUser').findByPk(id);
-  // };
+  Climb.delete = async function (id) {
+    const remove = await Climb.findByPk(id);
+    Climb.destroy({where : {id: remove.id}});
+  }
 
   Climb.associate = function(models) {
     Climb.belongsTo(models.User, { foreignKey: 'user_id' })

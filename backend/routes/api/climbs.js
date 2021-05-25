@@ -17,4 +17,40 @@ router.get('/', restoreUser, asyncHandler( async (req, res) => {
     return res.json(climbs);
 }));
 
+router.post('/', asyncHandler( async (req, res) => {
+    const { user_id, name, notes, total_height } = req.body;
+    const climbs = await Climb.add({
+        user_id,
+        name,
+        notes,
+        total_height
+    });
+
+    return res.json(climbs);
+}));
+
+router.put(
+  '/',
+  asyncHandler(async (req, res) => {
+    const { name, notes, total_height } = req.body;
+    const climb = await Climb.findByPk(id);
+    user.update({
+        name,
+        notes,
+        total_height,
+    })
+
+    return res.json(climb);
+  }),
+);
+
+router.delete(
+    '/',
+    asyncHandler( async (req, res) => {
+      const { id } = req.body;
+      await Climb.delete(id);
+      return res.json({ message: 'climb deleted' });
+    })
+  );
+
 module.exports = router;

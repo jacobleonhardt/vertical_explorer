@@ -5,7 +5,9 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from './components/SignUpFormPage';
 import Landing from './components/Landing';
 import Profile from './components/Profile';
-import EditProfile from './components/EditProfile/EditProfile';
+import EditProfile from './components/EditProfile/index.js';
+import Climbs from './components/Climbs/index.js';
+import Footer from './components/Footer';
 import * as sessionActions from "./store/session";
 import Navigation from './components/Navigation';
 
@@ -39,8 +41,12 @@ function App() {
           <Route path="/settings">
             <EditProfile />
           </Route>
+          <Route path="/climbs">
+            <Climbs />
+          </Route>
         </Switch>
       )}
+      <Footer />
     </div>
   );
 }

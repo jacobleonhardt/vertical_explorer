@@ -13,7 +13,7 @@ function ClimbCard() {
         {prevClimbs.map(climb => {
           return (
             <div className='climb-card'>
-              <h4><span className='climbName'>{climb.name}</span><span className='climbHeight'>|| {climb.climb_height} ft</span></h4>
+              <h4><span className='climbName'>{climb.name}</span> <span className='climbHeight'>{climb.climb_height} ft</span></h4>
               {climb.notes ? <p>{climb.notes}</p> : null}
             </div>
           )

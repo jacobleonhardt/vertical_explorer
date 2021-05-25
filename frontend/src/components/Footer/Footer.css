@@ -1,0 +1,13 @@
+.footer {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 12px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer a {
+    font-size: 16px;
+    margin: 0 0 0 5px;
+}

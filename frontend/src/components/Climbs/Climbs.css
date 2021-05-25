@@ -1,0 +1,102 @@
+form, label, .submitBtn {
+    width: 100%;
+    max-width: 500px;
+}
+
+.climb-form-content {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(0deg, rgba(250,250,250,.6), rgba(250,250,250,.6)), url('../../images/vertical_explorer_landing.jpg');
+    background-position: 40% 50% ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.errList {
+    margin: 0 auto;
+    border: 2px solid #bd2d1a;
+    background-color: rgba(250, 250, 250, .5);
+    line-height: 21px;
+    font-size: 16px;
+    width: 80%;
+    max-width: 80%;
+    color: #bd2d1a;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+.errList p {
+    margin-left: 8px;
+}
+
+.errList p i {
+    margin-right: 2px;
+}
+
+label {
+    text-align: center;
+}
+
+label span {
+    display: none;
+}
+
+input::placeholder, textarea::placeholder {
+    font-size: 18px;
+    line-height: 21px;
+    color: #444;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    justify-content: center;
+}
+
+input, textarea {
+    width: 80%;
+    min-width: 200px;
+    font-size: 18px;
+    line-height: 21px;
+    color: #000;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    padding: 8px;
+    border: 2px solid #000;
+    border-radius: 3px;
+}
+
+.submitBtn {
+    text-align: center;
+}
+
+button.formBtn {
+    width: 80%;
+    min-width: 200px;
+    margin-top: 16px;
+    background: #e84832;
+    color: #fff;
+    padding: 4px 16px 8px;
+    border: 0px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 21px;
+
+}
+
+button.formBtn:hover {
+    background: #bd2d1a;
+}
+
+.link-to {
+    margin-top: 16px;
+    font-size: 16px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    text-align: center;
+}
