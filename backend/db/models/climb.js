@@ -46,7 +46,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     const newClimb = climb.dataValues;
-    return await CLimb.findByPk(newClimb.id);
+    return await Climb.findByPk(newClimb.id);
   };
 
 
