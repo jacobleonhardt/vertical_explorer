@@ -10,21 +10,40 @@
     color: #fff;
 }
 
-h4 span {
+h5 {
     color: #fff;
     font-size: 18px;
     text-transform: none;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
+    margin-top: 0px;
 }
 
-h4 span.climbName {
+h5 span.seperator {
+    margin-right: 8px;
+    margin-left: 8px;
 }
 
-.icons i {
+.icons {
+    text-align: right;
+    margin-top: 4px;
+}
+
+.icons a {
     color: #fff;
+    margin-right: 0;
 }
 
 @media screen and (max-width: 768px) {
     .climb-card {
         max-width: 90%;
+    }
+
+    h5 span {
+        display: block;
+    }
+
+    h5 span.seperator {
+        display: none;
     }
 }

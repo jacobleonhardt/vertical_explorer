@@ -17,6 +17,13 @@ router.get('/', restoreUser, asyncHandler( async (req, res) => {
     return res.json(climbs);
 }));
 
+router.get('/id', restoreUser, asyncHandler( async (req, res) => {
+  const id = req.params.id;
+  const climb = await Climb.findByPk(id);
+
+  return res.json(climb);
+}));
+
 router.post('/', restoreUser, asyncHandler( async (req, res) => {
     const { user_id, name, notes, climb_height } = req.body;
     const climbs = await Climb.add({

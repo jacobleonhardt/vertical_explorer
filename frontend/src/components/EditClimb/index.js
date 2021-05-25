@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import * as sessionActions from "../../store/climb";
 import './EditClimb.css';
 
 export default function EditClimb() {
-
+    const { climbId } = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector((state) => state.session.user);
-    const sessionClimb = useSelector((state) => state.climb);
-    const [name, setName] = useState(sessionClimb.name);
-    const [notes, setNotes] = useState(sessionClimb.notes);
-    const [height, setHeigh] = useState(sessionClimb.height);
+    const climb = useSelector((state) => state.climb.climbId);
+    const [name, setName] = useState(climb.name);
+    const [notes, setNotes] = useState(climb.notes);
+    const [height, setHeigh] = useState(climb.height);
     const [errors, setErrors] = useState([]);
     const user_id = sessionUser.id;
     // const id = sessionClimb.id;
+
+    useEffect(() => {
+      // dispatch(getOneClimb(climb));
+    }, [climb])
 
     const handleSubmit = (e) => {
         e.preventDefault();

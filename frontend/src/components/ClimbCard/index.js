@@ -17,7 +17,7 @@ function ClimbCard() {
               <div className='icons'>
                 <Link to='/climbs/edit'><i class="fas fa-ellipsis-h"></i></Link>
               </div>
-              <h4><span className='climbName'>{climb.name}</span> <span className='climbHeight'>{climb.climb_height} ft</span></h4>
+              <h5><span className='climbName'>{climb.name}</span><span className='seperator'> | </span><span className='climbHeight'>{climb.climb_height} ft</span></h5>
               {climb.notes ? <p>{climb.notes}</p> : null}
             </div>
           )

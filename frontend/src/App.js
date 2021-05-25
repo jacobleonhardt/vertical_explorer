@@ -44,7 +44,7 @@ function App() {
           <Route path="/climbs">
             <Climbs />
           </Route>
-          <Route path='/climbs/edit'>
+          <Route path='/climbs/:id'>
             <EditClimb />
           </Route>
         </Switch>

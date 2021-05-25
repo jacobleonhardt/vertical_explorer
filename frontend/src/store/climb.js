@@ -14,6 +14,15 @@ export const getClimbs = () => async (dispatch) => {
     }
 }
 
+export const getOneClimb = (id) => async (dispatch) => {
+  const res = await csrfFetch(`/api/climbs/${id}`);
+  if (res.ok) {
+    const climb = await res.json();
+    dispatch(get(climb));
+    return climb;
+  }
+}
+
 export const addClimb = (climb) => async (dispatch) => {
     const { user_id, name, notes, climb_height } = climb;
     let res = await csrfFetch('/api/climbs', {
