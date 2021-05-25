@@ -94,7 +94,7 @@ module.exports = (sequelize, DataTypes) => {
   User.deleteProfile = async function (id) {
     const profile = await User.findByPk(id);
     User.destroy({where : {id: profile.id}});
-  }
+  };
 
   User.associate = function(models) {
     User.hasMany(models.Climb, { foreignKey: 'user_id' })

@@ -17,13 +17,6 @@ router.get('/', restoreUser, asyncHandler( async (req, res) => {
     return res.json(climbs);
 }));
 
-router.get('/id', restoreUser, asyncHandler( async (req, res) => {
-  const id = req.params.id;
-  const climb = await Climb.findByPk(id);
-
-  return res.json(climb);
-}));
-
 router.post('/', restoreUser, asyncHandler( async (req, res) => {
     const { user_id, name, notes, climb_height } = req.body;
     const climbs = await Climb.add({
@@ -36,12 +29,13 @@ router.post('/', restoreUser, asyncHandler( async (req, res) => {
     return res.json(climbs);
 }));
 
-router.put(
-  '/',
+router.patch(
+  '/:id',
+  restoreUser,
   asyncHandler(async (req, res) => {
-    const { name, notes, total_height } = req.body;
+    const { id, name, notes, total_height } = req.body;
     const climb = await Climb.findByPk(id);
-    user.update({
+    climb.update({
         name,
         notes,
         total_height,
@@ -52,7 +46,7 @@ router.put(
 );
 
 router.delete(
-    '/',
+    '/id',
     asyncHandler( async (req, res) => {
       const { id } = req.body;
       await Climb.delete(id);
