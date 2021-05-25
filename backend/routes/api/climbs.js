@@ -33,7 +33,7 @@ router.patch(
   '/:id',
   restoreUser,
   asyncHandler(async (req, res) => {
-    const { id, name, notes, total_height } = req.body;
+    const { id, user_id, name, notes, total_height } = req.body;
     const climb = await Climb.findByPk(id);
     climb.update({
         name,
@@ -41,7 +41,8 @@ router.patch(
         total_height,
     })
 
-    return res.json(climb);
+    const myClimbs = await Climb.findAll({ where: { user_id } });
+    return res.json(myClimbs);
   }),
 );
 

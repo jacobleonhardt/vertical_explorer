@@ -53,10 +53,9 @@ router.delete(
   );
 
 
-  module.exports = router;
 
-// Restore session user
-router.get(
+  // Restore session user
+  router.get(
     '/',
     restoreUser,
     (req, res) => {
@@ -64,7 +63,9 @@ router.get(
       if (user) {
         return res.json(
           user.toSafeObject()
-        );
-      } else return res.json(null);
-    }
-  );
+          );
+        } else return res.json(null);
+      }
+      );
+
+module.exports = router;
