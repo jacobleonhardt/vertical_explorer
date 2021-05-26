@@ -32,5 +32,5 @@ module.exports = (sequelize, DataTypes) => {
 Route.associate = function(models) {
   Route.belongsTo(models.User, { foreignKey: 'user_id' })
 };
-  return Routes;
+  return Route;
 };
