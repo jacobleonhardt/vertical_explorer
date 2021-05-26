@@ -13,16 +13,28 @@ module.exports = {
         allowNull: false,
       },
       difficulty: {
-        type: Sequelize.INTEGER
+        type: Sequelize.DECIMAL(2,2),
       },
       user_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references:{model: 'Users'},
       },
+      type_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references:{model: 'Types'},
+      },
       height: {
         type: Sequelize.INTEGER,
         allowNull: false,
+      },
+      favorite: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
+      photo: {
+        type: DataTypes.STRING,
       },
       createdAt: {
         allowNull: false,

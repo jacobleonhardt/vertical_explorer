@@ -65,6 +65,13 @@ module.exports = (sequelize, DataTypes) => {
 
   Climb.associate = function(models) {
     Climb.belongsTo(models.User, { foreignKey: 'user_id' })
+    const through = {
+      through: 'Routes_Climbed',
+      foreignKey: 'climb_id',
+      otherKey: 'route_id',
+    };
+    Climb.hasMany(models.Route, through)
+  };
   };
   return Climb;
 };

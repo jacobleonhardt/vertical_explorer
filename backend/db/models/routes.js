@@ -18,19 +18,38 @@ module.exports = (sequelize, DataTypes) => {
       len: [1, 50],
       },
     },
+  type_id: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: "Type",
+      key: 'id'
+      },
+    },
   height: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
   difficulty: {
     type: DataTypes.DECIMAL(2,2),
-    allowNull: false,
   },
+  favorite: {
+    type: DataTypes.BOOLEAN,
+  },
+  photo: {
+    type: DataTypes.STRING,
+  }
 
 });
 
 Route.associate = function(models) {
   Route.belongsTo(models.User, { foreignKey: 'user_id' })
+  Route.hasOne(models.Type, { foreignKey: 'type_id' })
+  const through = {
+    through: 'Routes_Climbed',
+    foreignKey: 'route_id',
+    otherKey: 'climb_id',
+  };
+  Route.belongsToMany(models.Climb, through)
 };
   return Route;
 };
