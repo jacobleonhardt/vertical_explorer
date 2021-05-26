@@ -1,22 +1,32 @@
 .climb-card {
     background-color:  #e84832;
-    padding: 5px 15px;
+    padding: 5px 16px;
     margin: 0 auto 2px;
     max-width: 50%;
 }
 
-.climb-card p {
+.climb-card p, .climb-routes {
     font-family: 'Roboto', sans-serif;
     color: #fff;
 }
 
+.climb-routes {
+    font-size: 14px;
+}
+
+.climb-routes .fas.fa-chevron-right {
+    font-size: 12px;
+    margin-right: 8px;
+}
+
 h5 {
     color: #fff;
-    font-size: 18px;
+    font-size: 21px;
     text-transform: none;
     font-family: 'Quicksand', sans-serif;
     font-weight: 400;
     margin-top: 0px;
+    margin-bottom: 16px;
 }
 
 h5 span.seperator {

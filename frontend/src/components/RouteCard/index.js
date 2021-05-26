@@ -10,12 +10,17 @@ function RouteCard({route}) {
 
     return (
             <div className='route-card'>
+              <div className='left'>
+
               <div className='icons'>
                 <Link to={`/route/${route.id}`}><i className="fas fa-ellipsis-h"></i></Link>
               </div>
               <h5><span className='routeName'>{route.location}</span> {route.favorite ? <i class="fas fa-heart"></i> : null} </h5>
               <h6>{routeType.name}</h6>
               {route.difficulty ? <p className='routeDetails'><i className="fas fa-ruler-vertical"></i> {route.height} ft <br/><i className="fas fa-tachometer-alt"></i> {route.difficulty}</p> : null}
+              </div>
+              {/* Prepping for adding images to routes, to be displayed on right side of card, or at bottom */}
+              {/* <div className='right'><img src='../../images/IMG_7583.jpg'/></div> */}
             </div>
     )};
 

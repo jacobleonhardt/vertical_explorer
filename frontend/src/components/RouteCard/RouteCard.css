@@ -13,7 +13,7 @@
     line-height: 28px;
 }
 
-h5 {
+.left h5 {
     color: #fff;
     font-size: 18px;
     text-transform: none;
@@ -23,7 +23,7 @@ h5 {
     margin-bottom: 8px;
 }
 
-h6 {
+.left h6 {
     color: #fff;
     font-size: 16px;
     text-transform: none;

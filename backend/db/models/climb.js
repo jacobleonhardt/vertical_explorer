@@ -50,13 +50,13 @@ module.exports = (sequelize, DataTypes) => {
   };
 
 
-  Climb.list = async function (id) {
-    return await Climb.findAll({ where: {
-        user_id: id
-      }, order: [
-      ['createdAt', 'DESC'],
-  ], });
-  };
+  // Climb.list = async function (id) {
+  //   return await Climb.findAll({ where: {
+  //       user_id: id
+  //     }, order: [
+  //     ['createdAt', 'DESC'],
+  // ], });
+  // };
 
   Climb.delete = async function (id) {
     const remove = await Climb.findByPk(id);

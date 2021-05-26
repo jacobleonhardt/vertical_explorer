@@ -92,11 +92,6 @@ input, textarea {
     min-width: 10px;
 }
 
-.route-selection > input[type=checkbox] {
-    border: 1px solid #e84832 !important;
-    border-radius: 0px !important;
-}
-
 .submitBtn {
     text-align: center;
 }

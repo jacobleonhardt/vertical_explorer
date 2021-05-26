@@ -3,7 +3,7 @@ const asyncHandler = require('express-async-handler');
 const { restoreUser } = require('../../utils/auth');
 
 // const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { Climb } = require('../../db/models');
+const { Climb, Routes_Climbed, Route } = require('../../db/models');
 
 // const { check } = require('express-validator');
 // const { handleValidationErrors } = require('../../utils/validation');
@@ -13,21 +13,43 @@ const router = express.Router();
 router.get('/', restoreUser, asyncHandler( async (req, res) => {
 
     const id = req.user.id;
-    const climbs = await Climb.list(id);
+    // const climbs = await Climb.list(id);
 
-    return res.json(climbs);
+    const myClimbs = await Climb.findAll({
+      where: { user_id: id },
+      include: [{ model: Route, through: { attributes: [] }}],
+      order: [
+        ['createdAt', 'DESC'],
+    ],
+    });
+
+
+    return res.json(myClimbs);
 }));
 
 router.post('/', restoreUser, asyncHandler( async (req, res) => {
-    const { user_id, name, notes, climb_height } = req.body;
-    await Climb.add({
+    const { user_id, name, notes, climb_height, routes } = req.body;
+
+
+    // const {route_id, location, added } = routes[0];
+
+    const newClimb = await Climb.add({
         user_id,
         name,
         notes,
-        climb_height
+        climb_height,
     });
 
-    const myClimbs = await Climb.list(user_id);
+    routes.forEach(async (route) => {
+      await Routes_Climbed.create({
+        route_id: route.route_id,
+        climb_id: newClimb.id
+      });
+    });
+
+   const myClimbs = await Climb.findAll({ where: { user_id }, include: [{ model: Route, through: { attributes: [] }}]});
+
+    // const myClimbs = await Climb.list(user_id, {});
     return res.json(myClimbs);
 }));
 
@@ -45,7 +67,13 @@ router.patch(
     })
 
     // after we update the climb obj, we need to grab the updated arr of objs
-    const myClimbs = await Climb.list(user_id);
+    const myClimbs = await Climb.findAll({
+      where: { user_id: id },
+      include: [{ model: Route, through: { attributes: [] }}],
+      order: [
+        ['createdAt', 'DESC'],
+    ],
+    });s
     return res.json(myClimbs);
   }),
 );
@@ -57,8 +85,15 @@ router.delete(
       const { id, user_id } = req.body;
       await Climb.delete(id);
 
+      const myClimbs = await Climb.findAll({
+        where: { user_id: id },
+        include: [{ model: Route, through: { attributes: [] }}],
+        order: [
+          ['createdAt', 'DESC'],
+      ],
+      });
 
-      const myClimbs = await Climb.list(user_id);
+      // const myClimbs = await Climb.list(user_id);
       return res.json(myClimbs);
     })
   );

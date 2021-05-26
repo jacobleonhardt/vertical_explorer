@@ -14,34 +14,33 @@ function Climbs() {
     const [name, setName] = useState('');
     const [notes, setNotes] = useState('');
     const [climb_height, setClimb_height] = useState(0);
-    const [routes, setRoutes] = useState('');
+    const [routes, setRoutes] = useState([]);
+    const [selectedRoutes, setSelectedRoutes] = useState([]);
     const [errors, setErrors] = useState([]);
     const user_id = sessionUser.id;
-
-  console.log('####', sessionRoutes)
+    // let selectedRoutes = [];
 
   useEffect(() => {
     dispatch(getRoutes());
   }, [])
 
-
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
-        dispatch(sessionActions.addClimb({ user_id, name, notes, climb_height }))
+        dispatch(sessionActions.addClimb({ user_id, name, notes, climb_height, routes }))
         history.push('/');
 
         // return setErrors(['Something went wrong. Please check that all the necessary fields are filled out.']);
       };
 
-      const onDelete = (e) => {
-        e.preventDefault();
-        // dispatch(sessionActions.deleteClimb(id))
-        history.push('/');
-      };
 
-      const toggle = ({ route }) => {
-        setRoutes((e) => ({ ...e, [route.location]: !e[route.location] }));
+      const onCheck = (e) => {
+        selectedRoutes.push({
+          route_id: e.target.id,
+          location: e.target.name,
+          added: e.target.value,
+        });
+        setRoutes([...routes, ...selectedRoutes]);
       }
 
     return (
@@ -69,9 +68,10 @@ function Climbs() {
               <div className='route-selection'>
                 <input
                   type="checkbox"
-                  onChange={toggle}
+                  onChange={onCheck}
                   key={route.id}
                   name={route.location}
+                  id={route.id}
                   // checked={route[selected]}
                   />{route.location}
                 </div>
@@ -89,7 +89,7 @@ function Climbs() {
           </label><br/>
           <div className='submitBtn'><button className='formBtn' type="submit">Add Climb</button></div>
           <Link to='/' className='link-to'><i class="fas fa-backward"></i> Back</Link>
-          <div className="delete"><button className='deleteBtn' onClick={onDelete}>Delete Climb <i class="fas fa-trash"></i></button></div>
+          {/* <div className="delete"><button className='deleteBtn' onClick={onDelete}>Delete Climb <i class="fas fa-trash"></i></button></div> */}
         </form>
         </div>
       );

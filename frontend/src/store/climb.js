@@ -2,7 +2,6 @@ import { csrfFetch } from './csrf';
 
 // Constants
 const GET_CLIMBS = '/climbs/GET';
-// const REMOVE_CLIMB = '/climbs/REMOVE';
 
 // Thunks
 export const getClimbs = () => async (dispatch) => {
@@ -14,23 +13,25 @@ export const getClimbs = () => async (dispatch) => {
 }
 
 export const addClimb = (climb) => async (dispatch) => {
-    const { user_id, name, notes, climb_height } = climb;
+    const { user_id, name, notes, climb_height, routes } = climb;
+    console.log('++++++', routes)
     let res = await csrfFetch('/api/climbs', {
         method: "POST",
         body: JSON.stringify({
             user_id,
             name,
             notes,
-            climb_height
+            climb_height,
+            routes
         }),
       });
-    const data = await res.json();
+      const data = await res.json();
     dispatch(get(data));
     return res;
   };
 
   export const editClimb = (updates) => async (dispatch) => {
-    const { id, user_id, name, notes, climb_height } = updates;
+    const { id, user_id, name, notes, climb_height, routes } = updates;
     let res = await csrfFetch(`/api/climbs/${id}`, {
         method: "PATCH",
         body: JSON.stringify({
@@ -38,7 +39,8 @@ export const addClimb = (climb) => async (dispatch) => {
             user_id,
             name,
             notes,
-            climb_height
+            climb_height,
+            routes
         }),
       });
     const data = await res.json();
