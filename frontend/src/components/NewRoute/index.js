@@ -1,44 +1,41 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import { useParams } from 'react-router'
-import * as sessionActions from "../../store/climb.js";
-// import { getClimbs, getOneClimb } from '../../store/climb';
-import './EditClimb.css';
+import * as sessionActions from "../../store/route";
+import './Routes.css';
 
-export default function EditClimb() {
-    const params = useParams();
+function Routes() {
+
     const dispatch = useDispatch();
     const history = useHistory();
-    const user_id = useSelector((state) => state.session.user.id);
-    const climbList = useSelector((state) => state.climbs);
-    const climb = climbList.find((climb) => climb.id == params.id);
-    const [name, setName] = useState(climb.name);
-    const [notes, setNotes] = useState(climb.notes);
-    const [height, setHeigh] = useState(climb.height);
+    const sessionUser = useSelector((state) => state.session.user);
+    const sessionClimb = useSelector((state) => state.climb);
+    const [name, setName] = useState('');
+    const [notes, setNotes] = useState('');
+    const [climb_height, setClimb_height] = useState(0);
     const [errors, setErrors] = useState([]);
-    const id = climb.id;
+    const user_id = sessionUser.id;
+    // const id = sessionClimb.id;
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
-        dispatch(sessionActions.editClimb({user_id, name, notes, height, id }))
+        dispatch(sessionActions.addClimb({ user_id, name, notes, climb_height }))
         history.push('/');
 
-        return setErrors(['Something went wrong. Please check that all the necessary fields are filled out.']);
+        // return setErrors(['Something went wrong. Please check that all the necessary fields are filled out.']);
       };
 
       const onDelete = (e) => {
         e.preventDefault();
-        const deleteThis = {id, user_id};
-        dispatch(sessionActions.deleteClimb(deleteThis))
+        // dispatch(sessionActions.deleteClimb(id))
         history.push('/');
       };
 
     return (
-        <div className='climb-edit-form-content'>
+        <div className='climb-form-content'>
         <form onSubmit={handleSubmit}>
-          <h3>Edit {climb.name}</h3>
+          <h3>New Climb</h3>
           <div className={errors.length > 0 ? 'errList' : null}>
             {errors.map((error, idx) => <p key={idx}><i class="fas fa-exclamation-triangle"></i>{error}</p>)}
           </div>
@@ -61,8 +58,8 @@ export default function EditClimb() {
               placeholder="Notes..."
             ></textarea>
           </label><br/>
-          <label>
-          <span>Add Routes</span><br/>
+          {/* <label> */}
+          {/* <span>Add Routes</span><br/> */}
             {/* <select>
             {routes.map(route => (
                 <input
@@ -74,11 +71,14 @@ export default function EditClimb() {
                 />
             ))}
             </select> */}
-          </label><br/>
-          <div className='submitBtn'><button className='formBtn' type="submit">Update Climb</button></div>
+          {/* </label><br/> */}
+          <div className='submitBtn'><button className='formBtn' type="submit">Add Climb</button></div>
           <Link to='/' className='link-to'><i class="fas fa-backward"></i> Back</Link>
           <div className="delete"><button className='deleteBtn' onClick={onDelete}>Delete Climb <i class="fas fa-trash"></i></button></div>
         </form>
         </div>
       );
     }
+
+export default Routes;
+s

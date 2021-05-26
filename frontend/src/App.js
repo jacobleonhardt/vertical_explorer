@@ -8,6 +8,7 @@ import Profile from './components/Profile';
 import EditProfile from './components/EditProfile/index.js';
 import Climbs from './components/Climbs/index.js';
 import EditClimb from './components/EditClimb/index.js';
+import Routes from './components/Routes/index.js';
 import Footer from './components/Footer';
 import * as sessionActions from "./store/session";
 import Navigation from './components/Navigation';
@@ -15,6 +16,7 @@ import Navigation from './components/Navigation';
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  // const climbs = useSelector(state => state.climbs)
   const sessionUser = useSelector(state => state.session.user);
 
   useEffect(() => {
@@ -41,11 +43,14 @@ function App() {
           <Route path="/settings">
             <EditProfile />
           </Route>
-          <Route path="/climbs">
+          <Route path="/climbs" exact>
             <Climbs />
           </Route>
           <Route path='/climbs/:id'>
             <EditClimb />
+          </Route>
+          <Route path='/routes' exact>
+            <Routes />
           </Route>
         </Switch>
       )}

@@ -1,0 +1,11 @@
+.climb-edit-form-content {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(0deg, rgba(250,250,250,.6), rgba(250,250,250,.6)), url('../../images/vertical_explorer_landing.jpg');
+    background-position: 40% 50% ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+}

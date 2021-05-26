@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/climb";
@@ -9,7 +9,7 @@ function Climbs() {
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector((state) => state.session.user);
-    const sessionClimb = useSelector((state) => state.climb);
+    // const sessionClimb = useSelector((state) => state.climb);
     const [name, setName] = useState('');
     const [notes, setNotes] = useState('');
     const [climb_height, setClimb_height] = useState(0);

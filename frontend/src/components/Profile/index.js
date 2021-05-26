@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { getClimbs } from '../../store/climb';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link, useHistory } from "react-router-dom";
+import { getClimbs } from '../../store/climb';
 import ClimbCard from '../ClimbCard';
 import './Profile.css';
 
 function Profile() {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
-  const prevClimbs = useSelector(state => state.climbs);
+  let prevClimbs = useSelector(state => state.climbs);
 
   useEffect(() => {
     return dispatch(getClimbs());
@@ -23,7 +24,7 @@ function Profile() {
       </div>
       <div className='prev-climbs'>
         <h4>Recent Climbs</h4>
-         {prevClimbs ? <ClimbCard /> : <span className='loading'>Loading...</span>}
+         {prevClimbs ? prevClimbs.map((climb) => <ClimbCard climb={climb} key={climb.id}/>) : <span className='loading'><i class="fad fa-spinner"></i> Loading...</span>}
       </div>
     </div>
   );

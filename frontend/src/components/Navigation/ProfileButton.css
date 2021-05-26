@@ -1,10 +1,14 @@
 .profile-dropdown {
-    padding: 8px;
+    padding: 16px;
     border: 1px solid #000;
     background: #fff;
     position: absolute;
     top: 60px;
     right: 16px;
+}
+
+.profile-dropdown > a {
+    line-height: 32px;
 }
 
 button.profileBtn {
@@ -31,6 +35,8 @@ button.logoutBtn {
     border: 0px;
     padding: 5px;
     border-radius: 3px;
+    margin-top: 16px;
+    margin-left: 16px;
 }
 
 button.logoutBtn:hover {
