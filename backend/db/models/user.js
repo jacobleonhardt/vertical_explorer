@@ -98,6 +98,7 @@ module.exports = (sequelize, DataTypes) => {
 
   User.associate = function(models) {
     User.hasMany(models.Climb, { foreignKey: 'user_id' })
+    User.hasMany(models.Route, { foreignKey: 'user_id' })
   };
   return User;
 };
