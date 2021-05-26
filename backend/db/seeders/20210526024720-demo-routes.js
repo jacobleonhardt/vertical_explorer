@@ -2,10 +2,11 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Climbs', [
+    return queryInterface.bulkInsert('Routes', [
       {
         id: 1,
         location: 'Vertical Escape BG',
+        type_id: 1,
         difficulty: 5.9,
         user_id: 1,
         height: 30,
@@ -17,6 +18,7 @@ module.exports = {
       {
         id: 2,
         name: 'Red River Gorge',
+        type_id: 1,
         difficulty: 5.7,
         user_id: 1,
         height: 55,

@@ -6,17 +6,17 @@ module.exports = (sequelize, DataTypes) => {
   const Routes_Climbed = sequelize.define('Routes_Climbed', {
     route_id: {
       type: DataTypes.INTEGER,
-      references: {
-        model: "Route",
-        key: 'id'
-      },
+      // references: {
+      //   model: "Route",
+      //   key: 'id'
+      // },
     },
     climb_id: {
       type: DataTypes.INTEGER,
-      references: {
-        model: "Climb",
-        key: 'id'
-      },
+      // references: {
+      //   model: "Climb",
+      //   key: 'id'
+      // },
     },
   });
 

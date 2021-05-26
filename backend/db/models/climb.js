@@ -70,8 +70,8 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'climb_id',
       otherKey: 'route_id',
     };
-    Climb.hasMany(models.Route, through)
+    Climb.belongsToMany(models.Route, through)
   };
-  };
+
   return Climb;
 };

@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Type.associate = function(models) {
-    Type.belongsToMany(models.Route, { foreignKey: 'type_id' })
+    Type.belongsTo(models.Route, { foreignKey: 'type_id' })
   };
   return Type;
 };
