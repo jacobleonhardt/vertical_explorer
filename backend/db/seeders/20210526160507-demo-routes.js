@@ -7,7 +7,7 @@ module.exports = {
         id: 1,
         location: 'Vertical Escape BG',
         type_id: 1,
-        difficulty: 5.9,
+        difficulty: 5.09,
         user_id: 1,
         height: 30,
         favorite: true,
@@ -17,16 +17,16 @@ module.exports = {
       },
       {
         id: 2,
-        name: 'Red River Gorge',
+        location: 'Red River Gorge',
         type_id: 1,
-        difficulty: 5.7,
+        difficulty: 5.07,
         user_id: 1,
         height: 55,
         favorite: false,
         photo: null,
         createdAt: new Date(),
         updatedAt: new Date()
-      }
+      },
     ], {});
   },
 

@@ -13,8 +13,12 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
+  Type.list = async function (id) {
+    return await Type.findAll();
+  };
+
   Type.associate = function(models) {
-    Type.belongsTo(models.Route, { foreignKey: 'type_id' })
+    Type.hasMany(models.Route, { foreignKey: 'type_id' })
   };
   return Type;
 };

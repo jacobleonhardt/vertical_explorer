@@ -9,12 +9,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       route_id: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
         allowNull: false,
         references: {model:'Routes'},
       },
       climb_id: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
         allowNull: false,
         references: {model:'Climbs'},
       },

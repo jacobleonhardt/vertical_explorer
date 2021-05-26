@@ -9,11 +9,11 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       location: {
-        type: Sequelize.STRING(50),
+        type: Sequelize.STRING(255),
         allowNull: false,
       },
       difficulty: {
-        type: Sequelize.DECIMAL(2,2),
+        type: Sequelize.DECIMAL(4,2),
       },
       user_id: {
         allowNull: false,
@@ -30,11 +30,11 @@ module.exports = {
         allowNull: false,
       },
       favorite: {
-        type: DataTypes.BOOLEAN,
+        type: Sequelize.BOOLEAN,
         defaultValue: false,
       },
       photo: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,

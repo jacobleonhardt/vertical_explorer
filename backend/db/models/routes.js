@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
-      len: [1, 50],
+      len: [1, 255],
       },
     },
   type_id: {
@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
     allowNull: false,
   },
   difficulty: {
-    type: DataTypes.DECIMAL(2,2),
+    type: DataTypes.DECIMAL(4,2),
   },
   favorite: {
     type: DataTypes.BOOLEAN,
@@ -41,9 +41,17 @@ module.exports = (sequelize, DataTypes) => {
 
 });
 
+Route.list = async function (id) {
+  return await Route.findAll({ where: {
+      user_id: id
+    }, order: [
+    ['createdAt', 'DESC'],
+], });
+};
+
 Route.associate = function(models) {
   Route.belongsTo(models.User, { foreignKey: 'user_id' })
-  Route.hasOne(models.Type, { foreignKey: 'type_id' })
+  Route.belongsTo(models.Type, { foreignKey: 'type_id' })
   const through = {
     through: 'Routes_Climbed',
     foreignKey: 'route_id',
