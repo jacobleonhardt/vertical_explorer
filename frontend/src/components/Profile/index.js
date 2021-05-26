@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory } from "react-router-dom";
 import { getClimbs } from '../../store/climb';
+import { getRoutes } from '../../store/route';
 import ClimbCard from '../ClimbCard';
 import './Profile.css';
 
@@ -11,6 +11,7 @@ function Profile() {
   let prevClimbs = useSelector(state => state.climbs);
 
   useEffect(() => {
+    dispatch(getRoutes());
     return dispatch(getClimbs());
   }, [])
 

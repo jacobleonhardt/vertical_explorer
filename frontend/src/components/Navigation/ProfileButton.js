@@ -39,9 +39,10 @@ function ProfileButton({ user }) {
       </button>
       {showMenu && (
         <div className="profile-dropdown">
-          <Link to='/routes'><i class="fas fa-route"></i> Routes</Link><br/>
-          <Link to='/climbs'><i class="fas fa-hand-rock"></i> Climbs</Link><br/>
-          <Link to='/settings'><i class="fas fa-cog"></i> Settings</Link><br/>
+          <Link to='/'><i className="fas fa-user"></i> Profile</Link><br/>
+          <Link to='/routes'><i className="fas fa-route"></i> Routes</Link><br/>
+          <Link to='/climbs'><i className="fas fa-hand-rock"></i> Climbs</Link><br/>
+          <Link to='/settings'><i className="fas fa-cog"></i> Settings</Link><br/>
           <button className='logoutBtn' onClick={logout}>Logout</button>
         </div>
       )}

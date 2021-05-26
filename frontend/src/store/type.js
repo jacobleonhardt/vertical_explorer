@@ -1,19 +1,19 @@
 import { csrfFetch } from './csrf';
 
 // Constants
-const GET_ROUTE = '/routes/GET';
+const GET_TYPE = '/types/GET';
 
 // Thunks
-export const getRoutes = () => async (dispatch) => {
-    const res = await csrfFetch('/api/routes');
+export const getTypes = () => async (dispatch) => {
+    const res = await csrfFetch('/api/types');
 
     if (res.ok) {
-      const route = await res.json();
-      dispatch(get(route));
+      const types = await res.json();
+      dispatch(get(types));
     }
 }
 
-export const addRoute = (climb) => async (dispatch) => {
+export const addTypes = (climb) => async (dispatch) => {
     const { user_id, name, notes, climb_height } = climb;
     let res = await csrfFetch('/api/routes', {
         method: "POST",
@@ -29,7 +29,7 @@ export const addRoute = (climb) => async (dispatch) => {
     return res;
   };
 
-  export const editRoute = (updates) => async (dispatch) => {
+  export const editTypes = (updates) => async (dispatch) => {
     const { id, user_id, name, notes, climb_height } = updates;
     let res = await csrfFetch(`/api/routes/${id}`, {
         method: "PATCH",
@@ -46,7 +46,7 @@ export const addRoute = (climb) => async (dispatch) => {
     return res;
   };
 
-  export const deleteRoute = (deleteIt) => async (dispatch) => {
+  export const deleteTypes = (deleteIt) => async (dispatch) => {
     const { id, user_id } = deleteIt;
     const res = await csrfFetch(`/api/routes/${id}`, {
       method: 'DELETE',
@@ -62,22 +62,22 @@ export const addRoute = (climb) => async (dispatch) => {
   };
 
 // Action Creator
-function get(route) {
+function get(types) {
    return {
-    type: GET_ROUTE,
-    route
+    type: GET_TYPE,
+    types
 }};
 
 
 // Reducer
 let initialState = [];
-export default function routeReducer(state = initialState, action) {
+export default function typeReducer(state = initialState, action) {
   let newState;
       switch (action.type) {
-        case GET_ROUTE:
+        case GET_TYPE:
            newState = [];
-           action.route.forEach(route => {
-             const temp = {...route};
+           action.types.forEach(types => {
+             const temp = {...types};
              newState.push(temp);
            })
            return newState;

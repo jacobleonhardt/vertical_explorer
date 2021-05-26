@@ -3,11 +3,13 @@ import thunk from "redux-thunk";
 import sessionReducer from './session';
 import climbsReducer from './climb';
 import routeReducer from './route';
+import typeReducer from './type';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   climbs: climbsReducer,
   routes: routeReducer,
+  types: typeReducer,
 });
 
 let enhancer;

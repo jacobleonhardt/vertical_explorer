@@ -72,6 +72,31 @@ input, textarea {
     border-radius: 3px;
 }
 
+.route-selection {
+    line-height: 21px;
+    color: #000;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    width: 80%;
+    margin-left: 10%;
+    max-width: 500px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.route-selection input {
+    display: inline-block;
+    width: auto;
+    text-align: left;
+    min-width: 10px;
+}
+
+.route-selection > input[type=checkbox] {
+    border: 1px solid #e84832 !important;
+    border-radius: 0px !important;
+}
+
 .submitBtn {
     text-align: center;
 }

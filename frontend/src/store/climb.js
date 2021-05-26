@@ -2,7 +2,7 @@ import { csrfFetch } from './csrf';
 
 // Constants
 const GET_CLIMBS = '/climbs/GET';
-const REMOVE_CLIMB = '/climbs/REMOVE';
+// const REMOVE_CLIMB = '/climbs/REMOVE';
 
 // Thunks
 export const getClimbs = () => async (dispatch) => {
@@ -75,7 +75,6 @@ export default function climbsReducer(state = initialState, action) {
   let newState;
       switch (action.type) {
         case GET_CLIMBS:
-          console.log('<><><>', action.climbs)
           // newState = [...action.climbs];
            newState = [];
            action.climbs.forEach(climb => {

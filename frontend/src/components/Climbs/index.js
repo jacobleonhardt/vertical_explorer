@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/climb";
+import { getRoutes } from '../../store/route';
 import './Climbs.css';
 
 function Climbs() {
@@ -9,13 +10,20 @@ function Climbs() {
     const dispatch = useDispatch();
     const history = useHistory();
     const sessionUser = useSelector((state) => state.session.user);
-    // const sessionClimb = useSelector((state) => state.climb);
+    const sessionRoutes = useSelector(state => state.routes);
     const [name, setName] = useState('');
     const [notes, setNotes] = useState('');
     const [climb_height, setClimb_height] = useState(0);
+    const [routes, setRoutes] = useState('');
     const [errors, setErrors] = useState([]);
     const user_id = sessionUser.id;
-    // const id = sessionClimb.id;
+
+  console.log('####', sessionRoutes)
+
+  useEffect(() => {
+    dispatch(getRoutes());
+  }, [])
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -31,6 +39,10 @@ function Climbs() {
         // dispatch(sessionActions.deleteClimb(id))
         history.push('/');
       };
+
+      const toggle = ({ route }) => {
+        setRoutes((e) => ({ ...e, [route.location]: !e[route.location] }));
+      }
 
     return (
         <div className='climb-form-content'>
@@ -50,6 +62,23 @@ function Climbs() {
             />
           </label><br/>
           <label>
+          <span>Add Routes</span><br/>
+          <p>Routes I Climbed</p>
+          <hr/>
+            {sessionRoutes.map(route => (
+              <div className='route-selection'>
+                <input
+                  type="checkbox"
+                  onChange={toggle}
+                  key={route.id}
+                  name={route.location}
+                  // checked={route[selected]}
+                  />{route.location}
+                </div>
+            ))}
+            <hr/>
+          </label><br/>
+          <label>
           <span>Notes</span><br/>
             <textarea
               type="text"
@@ -58,20 +87,6 @@ function Climbs() {
               placeholder="Notes..."
             ></textarea>
           </label><br/>
-          {/* <label> */}
-          {/* <span>Add Routes</span><br/> */}
-            {/* <select>
-            {routes.map(route => (
-                <input
-                  type="checkbox"
-                  onChange={route.name}
-                  key={route.id}
-                  name={route.name}
-                  checked={checked}
-                />
-            ))}
-            </select> */}
-          {/* </label><br/> */}
           <div className='submitBtn'><button className='formBtn' type="submit">Add Climb</button></div>
           <Link to='/' className='link-to'><i class="fas fa-backward"></i> Back</Link>
           <div className="delete"><button className='deleteBtn' onClick={onDelete}>Delete Climb <i class="fas fa-trash"></i></button></div>
