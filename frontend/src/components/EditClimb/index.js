@@ -36,7 +36,7 @@ export default function EditClimb() {
 
 
     const handleSubmit = (e) => {
-      console.log('############', routes)
+      // console.log('############', routes)
         e.preventDefault();
         setErrors([]);
         dispatch(sessionActions.editClimb({ id, user_id, name, notes, climb_height, routes }))

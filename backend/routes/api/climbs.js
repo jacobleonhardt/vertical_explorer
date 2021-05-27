@@ -30,9 +30,6 @@ router.get('/', restoreUser, asyncHandler( async (req, res) => {
 router.post('/', restoreUser, asyncHandler( async (req, res) => {
     const { user_id, name, notes, climb_height, routes } = req.body;
 
-
-    // const {route_id, location, added } = routes[0];
-
     const newClimb = await Climb.add({
         user_id,
         name,
@@ -48,7 +45,7 @@ router.post('/', restoreUser, asyncHandler( async (req, res) => {
     });
 
     const myClimbs = await Climb.findAll({
-      where: { user_id: id },
+      where: { user_id },
       include: [{ model: Route, through: { attributes: [] }}],
       order: [
         ['createdAt', 'DESC'],
@@ -56,6 +53,7 @@ router.post('/', restoreUser, asyncHandler( async (req, res) => {
     });
     // const myClimbs = await Climb.list(user_id, {});
     return await res.json(myClimbs);
+
 }));
 
 router.patch(
@@ -72,7 +70,9 @@ router.patch(
         total_height,
     });
 
-    const routesClimbed = await Routes_Climbed.findAll({ where: { climb_id: climb.id }});
+    const routesClimbed = await Routes_Climbed.findAll({
+      where: { climb_id: climb.id }
+    });
 
     routesClimbed.forEach(async (route) => {
       await Routes_Climbed.update({
@@ -83,14 +83,16 @@ router.patch(
 
     // after we update the climb obj, we need to grab the updated arr of objs
     const myClimbs = await Climb.findAll({
-      where: { user_id: id },
+      where: { user_id },
       include: [{ model: Route, through: { attributes: [] }}],
       order: [
         ['createdAt', 'DESC'],
     ],
     });
 
-    return res.json(myClimbs);
+    let response = res.json(myClimbs);
+
+    return response;
   }),
 );
 
@@ -98,12 +100,12 @@ router.delete(
     '/:id',
     restoreUser,
     asyncHandler( async (req, res) => {
-      const { id } = req.body;
+      const { id, user_id } = req.body;
       await Routes_Climbed.destroy({ where: { climb_id: id }});
       await Climb.destroy({ where: { id }});
 
       const myClimbs = await Climb.findAll({
-        where: { user_id: id },
+        where: { user_id },
         include: [{ model: Route, through: { attributes: [] }}],
         order: [
           ['createdAt', 'DESC'],

@@ -14,7 +14,7 @@ export const getClimbs = () => async (dispatch) => {
 
 export const addClimb = (climb) => async (dispatch) => {
     const { user_id, name, notes, climb_height, routes } = climb;
-    console.log('++++++', routes)
+    // console.log('++++++', routes)
     let res = await csrfFetch('/api/climbs', {
         method: "POST",
         body: JSON.stringify({
@@ -43,9 +43,12 @@ export const addClimb = (climb) => async (dispatch) => {
             routes
         }),
       });
+      console.log('###########', res)
+
     const data = await res.json();
+    console.log('&&&&&&&&&&', data)
     dispatch(get(data));
-    return res;
+    // return res;
   };
 
   export const deleteClimb = (deleteIt) => async (dispatch) => {
@@ -65,6 +68,7 @@ export const addClimb = (climb) => async (dispatch) => {
 
 // Action Creator
 function get(climbs) {
+  console.log('@@@@@@@@@@@', climbs)
    return {
     type: GET_CLIMBS,
     climbs
@@ -74,7 +78,7 @@ function get(climbs) {
 // Reducer
 let initialState = [];
 export default function climbsReducer(state = initialState, action) {
-  let newState;
+  let newState = [...state];
       switch (action.type) {
         case GET_CLIMBS:
           newState = [...action.climbs];
