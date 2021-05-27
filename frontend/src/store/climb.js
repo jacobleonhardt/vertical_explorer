@@ -43,10 +43,8 @@ export const addClimb = (climb) => async (dispatch) => {
             routes
         }),
       });
-      console.log('###########', res)
 
     const data = await res.json();
-    console.log('&&&&&&&&&&', data)
     dispatch(get(data));
     // return res;
   };
@@ -68,7 +66,6 @@ export const addClimb = (climb) => async (dispatch) => {
 
 // Action Creator
 function get(climbs) {
-  console.log('@@@@@@@@@@@', climbs)
    return {
     type: GET_CLIMBS,
     climbs

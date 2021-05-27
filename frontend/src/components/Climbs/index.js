@@ -65,9 +65,9 @@ function Climbs() {
           </label><br/>
           <label>
           <span>Add Routes</span><br/>
-          <p>Routes I Climbed</p>
+          <p>Routes Climbed</p>
           <hr/>
-            {sessionRoutes.map(route => (
+            {sessionRoutes.length > 0 ? sessionRoutes.map(route => (
               <div className='route-selection'>
                 <input
                   type="checkbox"
@@ -78,7 +78,7 @@ function Climbs() {
                   // checked={route[selected]}
                   />{route.location}
                 </div>
-            ))}
+            )) : <Link to='/add' className="add-routes"><i className="fas fa-plus"></i> Let's add some routes</Link>}
             <hr/>
           </label><br/>
           <label>

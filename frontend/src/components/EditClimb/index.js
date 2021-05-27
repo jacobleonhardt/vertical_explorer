@@ -78,7 +78,7 @@ export default function EditClimb() {
           <span>Add Routes</span><br/>
           <p>Routes Climbed</p>
           <hr/>
-            {sessionRoutes.map((route) => (
+            {sessionRoutes.length > 0 ? sessionRoutes.map((route) => (
               <div className='route-selection' key={`${route.id}`}>
                 <input
                   type="checkbox"
@@ -88,7 +88,8 @@ export default function EditClimb() {
                   // checked={isSelected(route.id)}
                   />{route.location}
                 </div>
-            ))}
+                )) :
+            <Link to='/add' className="add-routes"><i className="fas fa-plus"></i> Let's add some routes</Link> }
             <hr/>
           </label><br/>
           <label>
