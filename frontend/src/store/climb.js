@@ -77,12 +77,12 @@ export default function climbsReducer(state = initialState, action) {
   let newState;
       switch (action.type) {
         case GET_CLIMBS:
-          // newState = [...action.climbs];
-           newState = [];
-           action.climbs.forEach(climb => {
-             const temp = {...climb};
-             newState.push(temp);
-           })
+          newState = [...action.climbs];
+          //  newState = [];
+          //  action.climbs.forEach(climb => {
+          //    const temp = {...climb};
+          //    newState.push(temp);
+          //  })
            return newState;
         default:
             return state;
