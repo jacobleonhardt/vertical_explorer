@@ -25,7 +25,7 @@ function Routes() {
       </div>
       <div className='my-routes'>
         <h4><Link to='/add' className='new-route'><i className="fas fa-plus"></i> Add a Route</Link></h4>
-         {myRoutes ? myRoutes.map((route) => <RouteCard route={route} key={route.id}/>) : <span className='loading'><i class="fad fa-spinner"></i> Loading...</span>}
+         {myRoutes.length > 0 ? myRoutes.map((route) => <RouteCard route={route} key={route.id}/>) : <p className='no-routes'>No Routes Yet</p>}
       </div>
     </div>
   );

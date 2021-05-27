@@ -43,3 +43,10 @@ h3 i {
 .my-routes {
     text-align: center !important;
 }
+
+p.no-routes {
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    color: #555;
+}

@@ -27,7 +27,7 @@ function Profile() {
       </div>
       <div className='prev-climbs'>
         <h4>Recent Climbs</h4>
-         {prevClimbs ? prevClimbs.map((climb) => <ClimbCard climb={climb} key={climb.id}/>) : <span className='loading'><i class="fad fa-spinner"></i> Loading...</span>}
+         {prevClimbs.length > 0 ? prevClimbs.map((climb) => <ClimbCard climb={climb} key={climb.id}/>) : <p className='no-routes'>No Climbs Yet</p>}
       </div>
     </div>
   );
