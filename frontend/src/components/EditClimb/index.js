@@ -3,10 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { useParams } from 'react-router'
 import * as sessionActions from "../../store/climb.js";
-import { getClimbs } from '../../store/climb';
-import { getRoutes } from '../../store/route';
-import { getTypes } from '../../store/type';
-// import { getClimbs, getOneClimb } from '../../store/climb';
+// import { getClimbs } from '../../store/climb';
+// import { getRoutes } from '../../store/route';
+// import { getTypes } from '../../store/type';
 import './EditClimb.css';
 
 export default function EditClimb() {
@@ -14,32 +13,34 @@ export default function EditClimb() {
     const dispatch = useDispatch();
     const history = useHistory();
     const user_id = useSelector((state) => state.session.user.id);
+    let [climb_height, setClimb_height] = useState(0);
     const climbList = useSelector((state) => state.climbs);
     const climb = climbList.find((climb) => climb.id == params.id);
-    const myRoutes = useSelector((state) => state.climbs.Routes);
     const sessionRoutes = useSelector((state) => state.routes);
     const [name, setName] = useState(climb.name);
     const [notes, setNotes] = useState(climb.notes);
     const [height, setHeigh] = useState(climb.height);
-    const [routes, setRoutes] = useState();
+    const [routes, setRoutes] = useState(climb.Routes);
+
+  // let isSelected = (routeId) => {
+  //     for(let i = 0; i < routes.length; i++) {
+  //       if (routeId === routes[i].id) {
+  //         return true;
+  //       }
+  //   }
+  //   return false;
+  // }
+
     const [errors, setErrors] = useState([]);
     const id = climb.id;
 
-  console.log('>>>>>', myRoutes)
-
-    // useEffect(() => {
-    //   dispatch(getTypes());
-    //   dispatch(getRoutes());
-    //   return dispatch(getClimbs());
-    // }, [])
 
     const handleSubmit = (e) => {
+      console.log('############', routes)
         e.preventDefault();
         setErrors([]);
-        dispatch(sessionActions.editClimb({user_id, name, notes, height, id, routes }))
+        dispatch(sessionActions.editClimb({ id, user_id, name, notes, climb_height, routes }))
         history.push('/');
-
-        return setErrors(['Something went wrong. Please check that all the necessary fields are filled out.']);
       };
 
       const onDelete = (e) => {
@@ -55,7 +56,6 @@ export default function EditClimb() {
         const location = target.location;
         setRoutes({[location]: value});
       }
-
 
     return (
         <div className='climb-edit-form-content'>
@@ -78,14 +78,14 @@ export default function EditClimb() {
           <span>Add Routes</span><br/>
           <p>Routes Climbed</p>
           <hr/>
-            {sessionRoutes.map(route => (
-              <div className='route-selection'>
+            {sessionRoutes.map((route) => (
+              <div className='route-selection' key={`${route.id}`}>
                 <input
                   type="checkbox"
                   onChange={onCheck}
                   key={route.id}
                   name={route.location}
-                  // checked={route[selected]}
+                  // checked={isSelected(route.id)}
                   />{route.location}
                 </div>
             ))}

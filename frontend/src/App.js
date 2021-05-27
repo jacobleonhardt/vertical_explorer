@@ -9,7 +9,7 @@ import EditProfile from './components/EditProfile/index.js';
 import Climbs from './components/Climbs/index.js';
 import EditClimb from './components/EditClimb/index.js';
 import Routes from './components/Routes/index.js';
-import NewRoute from './components/NewRoute/index.js'
+import NewRoute from './components/NewRoute/index.js';
 import Footer from './components/Footer';
 import * as sessionActions from "./store/session";
 import Navigation from './components/Navigation';
@@ -53,9 +53,9 @@ function App() {
           <Route path='/routes' exact>
             <Routes />
           </Route>
-          <Route path='/routes/add'>
+          {/* <Route path='/routes/add'>
             <NewRoute />
-          </Route>
+          </Route> */}
         </Switch>
       )}
       <Footer />

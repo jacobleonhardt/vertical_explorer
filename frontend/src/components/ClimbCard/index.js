@@ -16,7 +16,7 @@ function ClimbCard({climb}) {
               <h5><span className='climbName'>{climb.name}</span><span className='seperator'> | </span><span className='climbHeight'>{climb.climb_height} ft</span></h5>
               <div className="climb-routes">
                 {routes.map((route) => {
-                return <div className='route'><i className="fas fa-chevron-right"></i> {route.location}</div>
+                return <div className='route' key={`${route.id}`}><i className="fas fa-chevron-right"></i> {route.location}</div>
                 })}
               </div>
               {climb.notes ? <p>{climb.notes}</p> : null}

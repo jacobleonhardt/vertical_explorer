@@ -13,18 +13,18 @@ function Climbs() {
     const sessionRoutes = useSelector(state => state.routes);
     const [name, setName] = useState('');
     const [notes, setNotes] = useState('');
-    const [climb_height, setClimb_height] = useState(0);
+    let [climb_height, setClimb_height] = useState(0);
     const [routes, setRoutes] = useState([]);
-    const [selectedRoutes, setSelectedRoutes] = useState([]);
     const [errors, setErrors] = useState([]);
     const user_id = sessionUser.id;
-    // let selectedRoutes = [];
+    let selectedRoutes = [];
 
   useEffect(() => {
     dispatch(getRoutes());
   }, [])
 
     const handleSubmit = (e) => {
+      console.log('############', climb_height)
         e.preventDefault();
         setErrors([]);
         dispatch(sessionActions.addClimb({ user_id, name, notes, climb_height, routes }))
@@ -41,6 +41,9 @@ function Climbs() {
           added: e.target.value,
         });
         setRoutes([...routes, ...selectedRoutes]);
+        // routes.forEach(route => {
+        //   setClimb_height([...climb_height, route.height])
+        // })
       }
 
     return (

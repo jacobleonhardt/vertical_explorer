@@ -20,6 +20,8 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
+
+
    Routes_Climbed.associate = function(models) {
   };
   return Routes_Climbed;

@@ -21,6 +21,10 @@ form {
     justify-content: center;
 }
 
+hr {
+    width: 80%;
+}
+
 .errList {
     margin: 0 auto;
     border: 2px solid #bd2d1a;
